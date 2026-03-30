@@ -1,0 +1,23 @@
+#!/bin/bash
+#PBS -N monsoon_2025_full
+#PBS -j oe
+#PBS -o cluster_outputs/
+#PBS -V
+#PBS -l nodes=1:ppn=26
+#PBS -l mem=100gb
+
+cd "$PBS_O_WORKDIR"
+
+echo "======================================"
+echo "Full 2025 pipeline"
+echo "Host: $(hostname)"
+echo "Date: $(date)"
+echo "======================================"
+
+bash submit/run_prepare_data.sh
+bash submit/run_2025_pipeline.sh
+
+echo "======================================"
+echo "Full 2025 pipeline complete"
+echo "Date: $(date)"
+echo "======================================"
